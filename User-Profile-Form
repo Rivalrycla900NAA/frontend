@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .profile-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+        }
+        .profile-form h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .profile-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+        .profile-form input, .profile-form select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .profile-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .profile-form button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-form">
+        <h2>User Profile Form</h2>
+        <form id="userProfileForm">
+            <div class="form-grid">
+                <!-- Personal Information -->
+                <div>
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" name="firstname" required>
+                </div>
+                <div>
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+                <div>
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div>
+                    <label for="contact">Contact:</label>
+                    <input type="tel" id="contact" name="contact" required>
+                </div>
+
+                <!-- Employment and Income -->
+                <div>
+                    <label for="employment_status">Employment Status:</label>
+                    <select id="employment_status" name="employment_status" required>
+                        <option value="employed">Employed</option>
+                        <option value="unemployed">Unemployed</option>
+                        <option value="self-employed">Self-Employed</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="income_range">Income Range:</label>
+                    <select id="income_range" name="income_range" required>
+                        <option value="0-30k">0 - 30k</option>
+                        <option value="30k-60k">30k - 60k</option>
+                        <option value="60k-80k">60k - 80k</option>
+                        <option value="80k+">80k+</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="housing_type">Housing Type:</label>
+                    <select id="housing_type" name="housing_type" required>
+                        <option value="own">Own</option>
+                        <option value="rent">Rent</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="gross_income">Gross Income Last Year ($):</label>
+                    <input type="number" id="gross_income" name="gross_income" required>
+                </div>
+
+                <!-- Investment Accounts -->
+                <div>
+                    <label for="stocks">Stocks Investment ($):</label>
+                    <input type="number" id="stocks" name="stocks" required>
+                </div>
+                <div>
+                    <label for="crypto">Crypto Investment ($):</label>
+                    <input type="number" id="crypto" name="crypto" required>
+                </div>
+
+                <!-- Reference -->
+                <div>
+                    <label for="reference">Reference:</label>
+                    <input type="text" id="reference" name="reference" required>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript to handle form submission
+        document.getElementById('userProfileForm').addEventListener('submit', async function (event) {
+            event.preventDefault(); // Prevent form from submitting
+
+            // Collect form data
+            const formData = new FormData(event.target);
+            const userProfile = {};
+            formData.forEach((value, key) => {
+                userProfile[key] = value;
+            });
+
+            // Send data to the API
+            try {
+                const response = await fetch('/api/background-check', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userProfile),
+                });
+
+                if (!response.ok) {
+                    throw new Error('API request failed');
+                }
+
+                const result = await response.json();
+                console.log('API Response:', result);
+                alert('Background check submitted successfully!');
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to submit background check. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
