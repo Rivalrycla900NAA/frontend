@@ -22,13 +22,24 @@
     height: 100px;
     border-radius: 50%;
     border: 3px solid #007bff; /* Border matching the button color */
-    object-fit: cover; /* Ensures the image fits inside the circle */
+    object-fit: cover;
 }
 
 .user-name {
     font-size: 32px;
     font-weight: bold;
     color: #333; /* Dark text for clarity */
+}
+
+/* Add Charity Pulse styling */
+.charity-pulse {
+    font-size: 36px;
+    font-weight: bold;
+    color: #007bff; /* Color matching the theme */
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 1px;
 }
 
 /* Form section */
