@@ -69,4 +69,7 @@ export default function UserProfileForm() {
                     </div>
                 ))}
             </div>
-            <Button type="submit" className="submit-button">Submit
+            <Button type="submit" className="submit-button">Submit</Button>
+        </form>
+    );
+}
