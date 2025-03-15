@@ -1,116 +1,15 @@
-/* General Layout with Sidebar */
-.user-profile-container {
-    display: flex;
-    min-height: 100vh;
-    background-image: url('./assets/sidebar-bg.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-/* Sidebar styling */
-.sidebar {
-    width: 200px;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar li {
-    color: #fff;
-    padding: 15px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: background-color 0.3s ease;
-    border-radius: 6px;
-}
-
-.sidebar li:hover,
-.sidebar li.active {
-    background-color: #007bff;
-}
-
-/* Main content styling */
-.main-content {
-    flex-grow: 1;
-    padding: 30px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    margin-left: -20px; /* overlap sidebar slightly for aesthetic effect */
-}
-
-/* Existing profile header styles */
-.user-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-.profile-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 3px solid #007bff;
-    object-fit: cover;
-}
-
-.user-name {
-    font-size: 32px;
-    font-weight: bold;
-    color: #333;
-}
-
-/* Form title styling */
-.form-title {
-    font-size: 26px;
-    font-weight: 600;
-    color: #444;
-    margin-bottom: 20px;
-}
-
-/* Buttons styling - reuse existing styling */
-.upload-button, .submit-button {
+.sidebar-signup-button {
+    padding: 10px 15px;
+    margin-top: 20px;
     background-color: #007bff;
     color: white;
-    padding: 12px 18px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
     transition: background-color 0.3s ease;
 }
 
-.upload-button:hover, .submit-button:hover {
+.sidebar-signup-button:hover {
     background-color: #0056b3;
-}
-
-/* Responsive styling for smaller screens */
-@media (max-width: 768px) {
-    .user-profile-container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        display: flex;
-        overflow-x: auto;
-    }
-
-    .sidebar ul {
-        display: flex;
-        gap: 10px;
-    }
-
-    .sidebar li {
-        flex: none;
-    }
-
-    .main-content {
-        margin-left: 0;
-        border-radius: 0;
-    }
 }
