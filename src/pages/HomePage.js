@@ -1,9 +1,21 @@
-import React, { useContext } from "react";
-import { DonationContext } from "../context/DonationContext";
-import "../HomePage.css"; // Update path if you place CSS elsewhere
+import React, { useState } from "react";
+import "../HomePage.css"; // ✅ Adjust path if needed
 
 const HomePage = () => {
-  const { donations } = useContext(DonationContext);
+  const [donations] = useState([
+    {
+      id: 1,
+      name: "Laptop Donation",
+      image: "/laptop.jpg",
+      description: "Used but working laptops for students."
+    },
+    {
+      id: 2,
+      name: "Winter Jackets",
+      image: "/jackets.jpg",
+      description: "Warm jackets for cold weather"
+    }
+  ]);
 
   return (
     <div className="homepage-container">
@@ -24,4 +36,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
