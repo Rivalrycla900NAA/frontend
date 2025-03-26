@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import HomePage from "./pages/HomePage"; // ✅ Import your homepage
+import BackgroundCheckForm from "./pages/BackgroundCheckForm";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/verify" element={<BackgroundCheckForm />} />
       </Routes>
     </Router>
   );
