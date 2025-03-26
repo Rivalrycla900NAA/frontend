@@ -46,7 +46,7 @@ const BackgroundCheckForm = () => {
             "/BackgroundCheckFunction",  // 👈 relative path, no domain
             payload,
             { headers: { "Content-Type": "application/json" } }
-          );
+          ); //updated
           
       setResult(response.data.eligible);
     } catch (error) {
