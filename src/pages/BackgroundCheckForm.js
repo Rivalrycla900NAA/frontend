@@ -49,9 +49,19 @@ const BackgroundCheckForm = () => {
       );
       setResult(response.data.eligible);
     } catch (error) {
-      console.error("API Error:", error);
-      setResult("error");
-    }
+        if (error.response) {
+          console.error("API Response Error:", error.response.data);
+          alert("Server responded with an error: " + JSON.stringify(error.response.data));
+        } else if (error.request) {
+          console.error("No response from server:", error.request);
+          alert("No response from server. Please check your network.");
+        } else {
+          console.error("Unexpected error:", error.message);
+          alert("Unexpected error: " + error.message);
+        }
+        setResult("error");
+      }
+      
   };
   
 
