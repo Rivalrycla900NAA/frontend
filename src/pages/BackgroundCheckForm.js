@@ -22,21 +22,25 @@ const BackgroundCheckForm = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const payload = {
-      ...formData,
+      firstname: formData.firstname,
+      lastname: formData.lastname,
+      address: formData.address,
+      contact: formData.contact,
+      employment_status: formData.employment_status,
+      income_range: formData.income_range, // e.g. "60k-80k"
+      housing_type: formData.housing_type,
       investment_accounts: {
-        stocks: Number(formData.stocks),
-        crypto: Number(formData.crypto),
+        stocks: Number(formData.stocks || 0),
+        crypto: Number(formData.crypto || 0),
       },
+      gross_income_last_year: Number(formData.gross_income_last_year),
+      reference: formData.reference,
     };
-
-    delete payload.stocks;
-    delete payload.crypto;
-
+  
     try {
       const response = await axios.post(
         "https://qj4tudodmb.execute-api.us-east-1.amazonaws.com/BackgroundCheckFunction",
@@ -45,10 +49,11 @@ const BackgroundCheckForm = () => {
       );
       setResult(response.data.eligible);
     } catch (error) {
-      console.error("API error:", error);
+      console.error("API Error:", error);
       setResult("error");
     }
   };
+  
 
   return (
     <div className="form-container">
