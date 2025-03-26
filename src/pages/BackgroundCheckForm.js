@@ -42,11 +42,12 @@ const BackgroundCheckForm = () => {
     };
   
     try {
-      const response = await axios.post(
-        "https://qj4tudodmb.execute-api.us-east-1.amazonaws.com/BackgroundCheckFunction",
-        payload,
-        { headers: { "Content-Type": "application/json" } }
-      );
+        const response = await axios.post(
+            "/BackgroundCheckFunction",  // 👈 relative path, no domain
+            payload,
+            { headers: { "Content-Type": "application/json" } }
+          );
+          
       setResult(response.data.eligible);
     } catch (error) {
         if (error.response) {
